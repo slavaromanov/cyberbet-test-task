@@ -12,18 +12,6 @@ import (
 	"github.com/slavaromanov/cyberbet-test-task/storage"
 )
 
-/*
-type KeyValueStorageServer interface {
-	Set(context.Context, *SetKeyValueRequest) (*empty.Empty, error)
-	SetWithTTL(context.Context, *SetKeyValueWithTTLRequest) (*empty.Empty, error)
-	SetTTL(context.Context, *SetKeyTTLRequest) (*empty.Empty, error)
-	GetValue(context.Context, *ByKeyRequest) (*KVResponse, error)
-	GetTTL(context.Context, *ByKeyRequest) (*duration.Duration, error)
-	GetValues(context.Context, *empty.Empty) (*GetValuesResponse, error)
-	Delete(context.Context, *ByKeyRequest) (*empty.Empty, error)
-}
-*/
-
 var emp = &empty.Empty{}
 
 type server struct {
