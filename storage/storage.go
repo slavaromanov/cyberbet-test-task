@@ -178,6 +178,7 @@ func (s *Storage) PutWithTTL(key, value string, ttl time.Duration) {
 		item := NewItem(key, value)
 		item.SetTTL(ttl)
 		s.putNew(item)
+		s.expiredKeys = push(s.expiredKeys, item)
 		return
 	}
 	if item.TTL != nil {

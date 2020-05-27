@@ -71,5 +71,5 @@ func (s *server) GetValues(ctx context.Context, empt *empty.Empty) (*pb.GetValue
 }
 
 func (s *server) Delete(ctx context.Context, kReq *pb.ByKeyRequest) (*empty.Empty, error) {
-	return nil, s.Storage.Delete(kReq.Key)
+	return emp, s.Storage.Delete(kReq.Key)
 }
