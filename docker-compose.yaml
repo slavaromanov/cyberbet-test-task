@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  cyberbet-test:
+    build: .
+    container_name: cyberbet-test
+    ports:
+      - 5330:5330
+    volumes:
+      - ./data:/app/data

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package proto;
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+
+message SetKeyValueRequest {
+	string key = 1;
+	string value = 2;
+}
+
+message SetKeyValueWithTTLRequest {
+	string key = 1;
+	string value = 2;
+	google.protobuf.Duration ttl = 3;
+}
+
+message SetKeyTTLRequest {
+	string key = 1;
+	google.protobuf.Duration ttl = 2;
+}
+
+message ValueResponse {
+	string value = 2;
+}
+
+message KeyValue {
+	string key = 1;
+	string value = 2;
+}
+
+message GetValuesResponse {
+	repeated string values = 1;
+}
+
+message ByKeyRequest {
+	string key = 1;
+}
+
+service KeyValueStorage {
+	rpc Set (SetKeyValueRequest) returns (google.protobuf.Empty);
+	rpc SetWithTTL (SetKeyValueWithTTLRequest) returns (google.protobuf.Empty);
+	rpc SetTTL (SetKeyTTLRequest) returns (google.protobuf.Empty);
+	rpc GetValue (ByKeyRequest) returns (ValueResponse);
+	rpc GetTTL (ByKeyRequest) returns (google.protobuf.Duration);
+	rpc GetValues (google.protobuf.Empty) returns (GetValuesResponse);
+	rpc Delete (ByKeyRequest) returns (google.protobuf.Empty);
+}
